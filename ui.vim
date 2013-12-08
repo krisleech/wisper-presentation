@@ -11,6 +11,9 @@ function! Ui()
   :set foldcolumn=1
   :bufdo :loadview
   :bufdo execute "normal! ggzj"
+  :bufdo :hi NonText ctermfg=235 ctermbg=235
+  :bufdo :call SyntaxRange#Include('@begin=ruby@', '@end=ruby@', 'ruby', 'NonText')
+  :bufdo :call SyntaxRange#Include('@begin=haml@', '@end=haml@', 'haml', 'NonText')
   :buffer 1
 endfunction
 

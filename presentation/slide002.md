@@ -2,6 +2,7 @@
 
         This shows how to mimic the behaviour of `ActiveRecord::Observer` callbacks. The observer is a simple PORO.
 
+        @begin=ruby@
         # models/bid_observer.rb
 
         class BidObserver
@@ -35,86 +36,4 @@
             @bid.save
           end
         end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-slide 2
+        @end=ruby@

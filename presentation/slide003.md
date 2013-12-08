@@ -1,11 +1,14 @@
         Reserving seats for a conference
 
+        @begin=haml@
         %h2 #{@conference.name}
 
         = simple_form_for @reservation_form, :url => new_conference_reservations_path(@conference) do |form|
           = form.input :number_of_seats
           = form.submit 'Reserve Seats'
+        @end=haml@
 
+        @begin=ruby@
         # Form
 
         class ReservationForm
@@ -19,9 +22,11 @@
           validates :customer, :event, :presence => true, :strict => true
           validates :number_of_seats, :presence => true, :numericity => true
         end
+        @end=ruby@
 
         # Service
 
+        @begin=ruby@
         class ReserveSeats
           include Wisper::Publisher
 
@@ -36,6 +41,7 @@
             end
           end
         end
+        @end=ruby@
 
         # Controller
 
