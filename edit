@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-vi presentation/*.md
-
+vi -S edit.vim -- presentation/*.md
