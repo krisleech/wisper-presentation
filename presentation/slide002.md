@@ -10,7 +10,9 @@
             # ...
           end
         end
+        @end=ruby@
 
+        @begin=ruby@
         # models/bid.rb
 
         class Bid < ActiveRecord::Base
@@ -22,7 +24,9 @@
             broadcast(:after_create, self)
           end
         end
+        @end=ruby@
 
+        @begin=ruby@
         # controllers/bids_controller.rb
 
         class BidsController < ApplicationController

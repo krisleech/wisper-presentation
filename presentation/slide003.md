@@ -24,9 +24,9 @@
         end
         @end=ruby@
 
-        # Service
-
         @begin=ruby@
+        # Service 
+
         class ReserveSeats
           include Wisper::Publisher
 
@@ -43,6 +43,7 @@
         end
         @end=ruby@
 
+        @begin=ruby@
         # Controller
 
         class ReservationsController
@@ -74,7 +75,9 @@
             @conference = Conference.find(event_id)
           end
         end
+        @end=ruby@
 
+        @begin=ruby@
         # The subscribers
 
         class ReservationMailer
@@ -88,6 +91,7 @@
             # update stats
           end
         end
+        @end=ruby@
 
 
 
