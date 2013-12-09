@@ -10,11 +10,15 @@ function! Ui()
   :hi Folded ctermbg=235 ctermfg=235
   :set foldcolumn=1
   :bufdo :loadview
-  :bufdo execute "normal! ggzj"
   :bufdo :hi NonText ctermfg=235 ctermbg=235
   :bufdo :call SyntaxRange#Include('@begin=ruby@', '@end=ruby@', 'ruby', 'NonText')
   :bufdo :call SyntaxRange#Include('@begin=haml@', '@end=haml@', 'haml', 'NonText')
+  :bufdo :GitGutterDisable
+  :bufdo execute "normal! gg"
   :buffer 1
+  :map r zjzozz
+  " :map R Gzk[zzc
+  :map Q qa!
 endfunction
 
 :call Ui()

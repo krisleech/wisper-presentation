@@ -1,7 +1,6 @@
         Using Global Listeners to communicate between Rails Engines
 
         In the core engine
-
         @begin=ruby@
         class CreateStudy
           include Wisper::Publisher
@@ -19,98 +18,15 @@
           end
         end
         @end=ruby@
-
         Somewhere is another engine...
-
         @begin=ruby@
-        Wisper.add_listener(Recruitment::StudyListener.new)
-
-        # The listener
-
         class Recruitment::StudyListener
           def study_created_successfully(study)
             # ...
           end
         end
         @end=ruby@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-slide 4
+        Globally subscribe listener in engine initialization
+        @begin=ruby@
+        Wisper.add_listener(Recruitment::StudyListener.new)
+        @end=ruby@

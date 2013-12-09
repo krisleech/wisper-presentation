@@ -1,5 +1,8 @@
-        Reserving seats for a conference
+        Broadcasting events from Service objects
 
+        Feature: Reserving seats for a conference
+
+        The UI
         @begin=haml@
         %h2 #{@conference.name}
 
@@ -7,10 +10,8 @@
           = form.input :number_of_seats
           = form.submit 'Reserve Seats'
         @end=haml@
-
+        The Form
         @begin=ruby@
-        # Form
-
         class ReservationForm
           include ActiveModel::Model
           include Virtus
@@ -20,13 +21,11 @@
           attribute :number_of_seats
 
           validates :customer, :event, :presence => true, :strict => true
-          validates :number_of_seats, :presence => true, :numericity => true
+          validates :number_of_seats,  :presence => true, :numericity => true
         end
         @end=ruby@
-
+        The Service
         @begin=ruby@
-        # Service 
-
         class ReserveSeats
           include Wisper::Publisher
 
@@ -42,10 +41,8 @@
           end
         end
         @end=ruby@
-
+        The Controller
         @begin=ruby@
-        # Controller
-
         class ReservationsController
           before_filter :find_conference
 
@@ -72,14 +69,12 @@
                                                     :conference => @conference)
 
           def find_conference
-            @conference = Conference.find(event_id)
+            @conference = Conference.find(conference_id)
           end
         end
         @end=ruby@
-
+        The Subscribers
         @begin=ruby@
-        # The subscribers
-
         class ReservationMailer
           def create_reservation_successful(reservation)
             # send email to customer
@@ -92,84 +87,3 @@
           end
         end
         @end=ruby@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-slide 3
