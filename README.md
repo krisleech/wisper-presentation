@@ -2,14 +2,23 @@
 
 ## Usage
 
+### View the Presentation
+
 ```
-./start
+./view
 ```
 
-zf to create a fold
-zj / zl to jump between folds
-zo / zc to open close folds
-:mkview to save folds
+`r` reveal the next fold
+
+When viewing the presentation folds are not visible.
+
+#### Edit the Presentation
+
+To create fold visually select a number of lines and then `zf`.
+
+When editing presentations folds are visible.
+
+`:w` write the buffer and state of folds
 
 ## Syntax Highlighting
 

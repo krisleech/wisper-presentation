@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-vi -S ui.vim -- presentation/*.md
