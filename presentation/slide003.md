@@ -1,13 +1,17 @@
-        Reserving seats for a conference
+        Broadcasting events from Service objects
 
+        Feature: Reserving seats for a conference
+
+        The UI
+        @begin=haml@
         %h2 #{@conference.name}
 
         = simple_form_for @reservation_form, :url => new_conference_reservations_path(@conference) do |form|
           = form.input :number_of_seats
           = form.submit 'Reserve Seats'
-
-        # Form
-
+        @end=haml@
+        The Form
+        @begin=ruby@
         class ReservationForm
           include ActiveModel::Model
           include Virtus
@@ -17,11 +21,11 @@
           attribute :number_of_seats
 
           validates :customer, :event, :presence => true, :strict => true
-          validates :number_of_seats, :presence => true, :numericity => true
+          validates :number_of_seats,  :presence => true, :numericity => true
         end
-
-        # Service
-
+        @end=ruby@
+        The Service
+        @begin=ruby@
         class ReserveSeats
           include Wisper::Publisher
 
@@ -36,9 +40,9 @@
             end
           end
         end
-
-        # Controller
-
+        @end=ruby@
+        The Controller
+        @begin=ruby@
         class ReservationsController
           before_filter :find_conference
 
@@ -65,12 +69,12 @@
                                                     :conference => @conference)
 
           def find_conference
-            @conference = Conference.find(event_id)
+            @conference = Conference.find(conference_id)
           end
         end
-
-        # The subscribers
-
+        @end=ruby@
+        The Subscribers
+        @begin=ruby@
         class ReservationMailer
           def create_reservation_successful(reservation)
             # send email to customer
@@ -82,84 +86,4 @@
             # update stats
           end
         end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-slide 3
+        @end=ruby@

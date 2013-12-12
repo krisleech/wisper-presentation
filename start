@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-rbenv local 1.9.3-p484
-bundle exec vimdeck -A open

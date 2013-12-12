@@ -1,19 +1,20 @@
-        An alternative to after callbacks and observers
+        Using Wisper as an alternative to `ActiveRecord::Observer`
 
-        This shows how to mimic the behaviour of `ActiveRecord::Observer` callbacks. The observer is a simple PORO.
-
-        # models/bid_observer.rb
-
+        The Observer
+        @begin=ruby@
         class BidObserver
           def after_create(bid)
             # ...
           end
         end
-
-        # models/bid.rb
-
+        @end=ruby@
+        The Model
+        @begin=ruby@
         class Bid < ActiveRecord::Base
           include Wisper::Publisher
+
+          belongs_to :user
+          belongs_to :product
 
           validates :amount, :presence => true
 
@@ -21,9 +22,9 @@
             broadcast(:after_create, self)
           end
         end
-
-        # controllers/bids_controller.rb
-
+        @end=ruby@
+        The Controller
+        @begin=ruby@
         class BidsController < ApplicationController
           def new
             @bid = Bid.new
@@ -35,86 +36,4 @@
             @bid.save
           end
         end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-slide 2
+        @end=ruby@

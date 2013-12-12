@@ -1,5 +1,16 @@
-" Set the UI for presentation
+" Set the UI for editting presentation
+function! LoadEditUi()
+  :set foldcolumn=1
+  :bufdo :loadview
+  :bufdo :call SyntaxRange#Include('@begin=ruby@', '@end=ruby@', 'ruby', 'NonText')
+  :bufdo :call SyntaxRange#Include('@begin=haml@', '@end=haml@', 'haml', 'NonText')
+  :bufdo :GitGutterDisable
+  :buffer 1
+endfunction
+
+" Set the UI for viewing presentation
 function! Ui()
+  :call LoadEditUi()
   :bufdo :set nocursorline
   :bufdo :set colorcolumn=
   :bufdo :set nu!
@@ -8,10 +19,21 @@ function! Ui()
   :bufdo :set fillchars=fold:_
   :bufdo :set foldtext=v:folddashes.substitute('','','','g')
   :hi Folded ctermbg=235 ctermfg=235
-  :set foldcolumn=1
-  :bufdo :loadview
-  :bufdo execute "normal! ggzj"
+  :bufdo :hi NonText ctermfg=235 ctermbg=235
   :buffer 1
 endfunction
 
-:call Ui()
+" Reveal the next fold
+:map r zjzo
+
+" Quit presenation without saving
+:map Q qa!
+
+" write buffer and save view (folds)
+:map ,w :w<CR>:mkview<CR>
+
+" Move cursor to first line
+:bufdo execute "normal! gg"
+
+" Switch to first slide/buffer
+:buffer 1
